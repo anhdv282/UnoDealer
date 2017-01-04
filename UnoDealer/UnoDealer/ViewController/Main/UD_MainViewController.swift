@@ -19,13 +19,18 @@ class UD_MainViewController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        self.lblUsername.text = username ?? "Hello"
+        self.lblUsername.text = username ?? ""
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func clickJoin(_ sender: Any) {
+        let roomVC = UD_RoomViewController(nibName: "UD_RoomViewController", bundle: Bundle.main)
+        self.navigationController?.pushViewController(roomVC, animated: true)
+    }
 
     /*
     // MARK: - Navigation
