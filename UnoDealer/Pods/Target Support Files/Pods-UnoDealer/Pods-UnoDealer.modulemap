@@ -1,0 +1,6 @@
+framework module Pods_UnoDealer {
+  umbrella header "Pods-UnoDealer-umbrella.h"
+
+  export *
+  module * { export * }
+}
