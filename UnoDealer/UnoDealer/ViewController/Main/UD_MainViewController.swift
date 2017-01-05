@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import FirebaseAuth
 class UD_MainViewController: UIViewController {
     var username:String?
     @IBOutlet weak var lblUsername: UILabel!
@@ -32,6 +32,15 @@ class UD_MainViewController: UIViewController {
         self.navigationController?.pushViewController(roomVC, animated: true)
     }
 
+    @IBAction func clickLogout(_ sender: Any) {
+        do {
+            try FIRAuth.auth()!.signOut()
+            self.navigationController?.popViewController(animated: true)
+        } catch {
+            
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

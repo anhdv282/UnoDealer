@@ -12,10 +12,16 @@ import FirebaseDatabase
 
 class UD_RoomViewController: UIViewController {
     @IBOutlet weak var myTableView: UITableView!
+    var user: User!
+    let ref = FIRDatabase.database().reference(withPath: "rooms")
     override func viewDidLoad() {
         super.viewDidLoad()
         myTableView.register(UINib(nibName: "UD_RoomTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "UD_RoomTableViewCell")
         // Do any additional setup after loading the view.
+        FIRAuth.auth()!.addStateDidChangeListener { auth, user in
+            guard let user = user else { return }
+            self.user = User(authData: user)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,7 +36,17 @@ class UD_RoomViewController: UIViewController {
         // Create the actions
         let addAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.default) {
             UIAlertAction in
+            let date = NSDate()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let dateString = dateFormatter.string(from: date as Date)
+            // 2
+            let groceryItem = Room(date: "test", addedByUser: self.user.email, completed: false)
+            // 3
+            let groceryItemRef = self.ref.child("test")
             
+            // 4
+            groceryItemRef.setValue(groceryItem.toAnyObject())
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
             UIAlertAction in
