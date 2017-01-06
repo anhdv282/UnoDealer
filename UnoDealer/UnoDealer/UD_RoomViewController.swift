@@ -41,9 +41,9 @@ class UD_RoomViewController: UIViewController {
             dateFormatter.dateFormat = "yyyy-MM-dd"
             let dateString = dateFormatter.string(from: date as Date)
             // 2
-            let groceryItem = Room(date: "test", addedByUser: self.user.email, completed: false)
+            let groceryItem = Room(date: dateString, addedByUser: self.user.email, completed: false)
             // 3
-            let groceryItemRef = self.ref.child("test")
+            let groceryItemRef = self.ref.child(dateString)
             
             // 4
             groceryItemRef.setValue(groceryItem.toAnyObject())
@@ -60,7 +60,6 @@ class UD_RoomViewController: UIViewController {
         // Present the controller
         self.present(alertController, animated: true, completion: nil)
     }
-    
 }
 
 extension UD_RoomViewController : UITableViewDelegate,UITableViewDataSource {

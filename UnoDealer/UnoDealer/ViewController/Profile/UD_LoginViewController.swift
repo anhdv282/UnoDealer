@@ -35,12 +35,14 @@ class UD_LoginViewController: UIViewController {
         } else if txtPassword.text == nil || txtPassword.text == "" {
             showAlertView(self, title: "", message: "Please fill in password field to continue")
             self.txtPassword.becomeFirstResponder()
+        } else if !isValidEmail(txtUsername.text ?? "") {
+            showAlertView(self, title: "", message: "Email is invalid!")
         } else {
             FIRAuth.auth()?.signIn(withEmail: txtUsername.text!, password: txtPassword.text!) { (user, error) in
                 if error == nil {
                     self.moveToMainView(username: (user?.email)!)
                 } else {
-                    showAlertView(self, title: "", message: "Cannot register")
+                    showAlertView(self, title: "Cannot register", message: "\(error)")
                 }
             }
         }
@@ -56,6 +58,11 @@ class UD_LoginViewController: UIViewController {
         let signUpVC = UD_SignUpViewController(nibName: "UD_SignUpViewController", bundle: Bundle.main)
         self.navigationController?.pushViewController(signUpVC, animated: true)
     }
+    
+    @IBAction func clickTap(_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+    
     
     func moveToMainView(username: String) {
         let mainViewVC = UD_MainViewController(nibName: "UD_MainViewController", bundle: Bundle.main)

@@ -14,3 +14,10 @@ func showAlertView(_ viewController : UIViewController, title : String, message 
     alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
     viewController.present(alert, animated: true, completion: nil)
 }
+
+func isValidEmail(_ testStr:String) -> Bool {
+    let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+    
+    let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+    return emailTest.evaluate(with: testStr)
+}

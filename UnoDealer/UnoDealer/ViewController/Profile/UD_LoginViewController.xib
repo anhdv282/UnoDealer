@@ -27,13 +27,13 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ams-9i-e6E">
                     <rect key="frame" x="16" y="100" width="343" height="142"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fzK-UW-QSF">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="vietanh.dang282@live.com" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fzK-UW-QSF">
                             <rect key="frame" x="0.0" y="37" width="343" height="30"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g8T-2b-dt8">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Zxcvbnm1" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g8T-2b-dt8">
                             <rect key="frame" x="0.0" y="104" width="343" height="30"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -118,7 +118,7 @@
                         <action selector="clickForgotPassword:" destination="-1" eventType="touchUpInside" id="ZI1-nQ-0Rx"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZU-Ta-0Y3">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZU-Ta-0Y3">
                     <rect key="frame" x="191" y="617" width="167.5" height="30"/>
                     <state key="normal" title="Register"/>
                     <connections>
@@ -142,7 +142,15 @@
                 <constraint firstItem="ams-9i-e6E" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="uvQ-Q6-6cD"/>
                 <constraint firstAttribute="trailing" secondItem="qZU-Ta-0Y3" secondAttribute="trailing" constant="16" id="xTg-8B-OFL"/>
             </constraints>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="PfZ-8m-Jkc" appends="YES" id="abb-sk-NTD"/>
+            </connections>
             <point key="canvasLocation" x="25.5" y="52.5"/>
         </view>
+        <tapGestureRecognizer id="PfZ-8m-Jkc">
+            <connections>
+                <action selector="clickTap:" destination="-1" id="rmj-V9-zqC"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>
