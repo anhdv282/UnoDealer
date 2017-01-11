@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import MBProgressHUD
 class UD_LoginViewController: UIViewController {
     @IBOutlet weak var txtUsername: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
@@ -38,7 +39,9 @@ class UD_LoginViewController: UIViewController {
         } else if !isValidEmail(txtUsername.text ?? "") {
             showAlertView(self, title: "", message: "Email is invalid!")
         } else {
+            MBProgressHUD.showAdded(to: self.view, animated: true)
             FIRAuth.auth()?.signIn(withEmail: txtUsername.text!, password: txtPassword.text!) { (user, error) in
+                MBProgressHUD.hide(for: self.view, animated: true)
                 if error == nil {
                     self.moveToMainView(username: (user?.email)!)
                 } else {

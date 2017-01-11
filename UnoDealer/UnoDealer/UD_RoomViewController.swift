@@ -9,10 +9,12 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import MBProgressHUD
 
 class UD_RoomViewController: UIViewController {
     @IBOutlet weak var myTableView: UITableView!
     var user: User!
+    var listRoom:[Room] = [Room]()
     let ref = FIRDatabase.database().reference(withPath: "rooms")
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,19 @@ class UD_RoomViewController: UIViewController {
             guard let user = user else { return }
             self.user = User(authData: user)
         }
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        ref.queryOrdered(byChild: "completed").observe(.value, with: { snapshot in
+            var newItems: [Room] = []
+            
+            for item in snapshot.children {
+                let groceryItem = Room(snapshot: item as! FIRDataSnapshot)
+                newItems.append(groceryItem)
+            }
+            
+            self.listRoom = newItems
+            self.myTableView.reloadData()
+            MBProgressHUD.hide(for: self.view, animated: true)
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,7 +53,7 @@ class UD_RoomViewController: UIViewController {
             UIAlertAction in
             let date = NSDate()
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
             let dateString = dateFormatter.string(from: date as Date)
             // 2
             let groceryItem = Room(date: dateString, addedByUser: self.user.email, completed: false)
@@ -60,16 +75,28 @@ class UD_RoomViewController: UIViewController {
         // Present the controller
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    @IBAction func clickBack(_ sender: UIButton) {
+        _ = self.navigationController?.popViewController(animated: true)
+    }
+    
 }
 
 extension UD_RoomViewController : UITableViewDelegate,UITableViewDataSource {
     // datasource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return listRoom.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UD_RoomTableViewCell", for: indexPath as IndexPath) as! UD_RoomTableViewCell
+        cell.lblDate.text = listRoom[indexPath.row].date
+        cell.lblStatus.text = listRoom[indexPath.row].completed ? "Closed" : "Open"
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let playVC = UD_PlayViewController(nibName: "UD_PlayViewController", bundle: Bundle.main)
+        self.navigationController?.pushViewController(playVC, animated: true)
     }
 }

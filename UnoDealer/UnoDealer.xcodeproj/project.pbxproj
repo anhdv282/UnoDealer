@@ -25,6 +25,8 @@
 		046300841E1CADCD00C8FC15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046300821E1CADCD00C8FC15 /* Main.storyboard */; };
 		046300861E1CADCD00C8FC15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046300851E1CADCD00C8FC15 /* Assets.xcassets */; };
 		046300891E1CADCD00C8FC15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046300871E1CADCD00C8FC15 /* LaunchScreen.storyboard */; };
+		047997611E24D0E0002E115C /* UD_PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479975F1E24D0E0002E115C /* UD_PlayViewController.swift */; };
+		047997621E24D0E0002E115C /* UD_PlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047997601E24D0E0002E115C /* UD_PlayViewController.xib */; };
 		A1DFE96693645F5D207460D6 /* Pods_UnoDealer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64ACBAEF6ABD12A78F6AA4B2 /* Pods_UnoDealer.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +51,9 @@
 		046300851E1CADCD00C8FC15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		046300881E1CADCD00C8FC15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0463008A1E1CADCD00C8FC15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0479975D1E24C059002E115C /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = "../../../../Library/Developer/Xcode/DerivedData/UnoDealer-akkqiwppxbbgxidpqnyzqtwcvpff/Build/Products/Debug-iphoneos/NVActivityIndicatorView/NVActivityIndicatorView.framework"; sourceTree = "<group>"; };
+		0479975F1E24D0E0002E115C /* UD_PlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UD_PlayViewController.swift; path = ViewController/Main/UD_PlayViewController.swift; sourceTree = "<group>"; };
+		047997601E24D0E0002E115C /* UD_PlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UD_PlayViewController.xib; path = ViewController/Main/UD_PlayViewController.xib; sourceTree = "<group>"; };
 		084133E7CEBA60B61C3D704F /* Pods-UnoDealer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnoDealer.release.xcconfig"; path = "Pods/Target Support Files/Pods-UnoDealer/Pods-UnoDealer.release.xcconfig"; sourceTree = "<group>"; };
 		64ACBAEF6ABD12A78F6AA4B2 /* Pods_UnoDealer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnoDealer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFF831274A777D32D8AAFA8D /* Pods-UnoDealer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnoDealer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UnoDealer/Pods-UnoDealer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -94,6 +99,8 @@
 				040B97131E1CED1F00387DCF /* UD_MainViewController.xib */,
 				040B971A1E1CFDA000387DCF /* UD_RoomViewController.swift */,
 				040B971B1E1CFDA000387DCF /* UD_RoomViewController.xib */,
+				0479975F1E24D0E0002E115C /* UD_PlayViewController.swift */,
+				047997601E24D0E0002E115C /* UD_PlayViewController.xib */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -153,6 +160,7 @@
 		4D8CB02AB941557E42C83677 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0479975D1E24C059002E115C /* NVActivityIndicatorView.framework */,
 				64ACBAEF6ABD12A78F6AA4B2 /* Pods_UnoDealer.framework */,
 			);
 			name = Frameworks;
@@ -239,6 +247,7 @@
 				040B96FA1E1CB01500387DCF /* GoogleService-Info.plist in Resources */,
 				040B971D1E1CFDA000387DCF /* UD_RoomViewController.xib in Resources */,
 				040B970C1E1CD5AD00387DCF /* UD_SignUpViewController.xib in Resources */,
+				047997621E24D0E0002E115C /* UD_PlayViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				040B97141E1CED1F00387DCF /* UD_MainViewController.swift in Sources */,
+				047997611E24D0E0002E115C /* UD_PlayViewController.swift in Sources */,
 				040B97191E1CEF6800387DCF /* Global.swift in Sources */,
 				040B970B1E1CD5AD00387DCF /* UD_SignUpViewController.swift in Sources */,
 				045DB7D41E1E491C005F29A0 /* Room.swift in Sources */,
