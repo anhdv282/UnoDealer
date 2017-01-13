@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 
 struct User {
-    
+    static var sharedInstance = User()
     let uid: String
     let email: String
     
@@ -24,4 +24,8 @@ struct User {
         self.email = email
     }
     
+    init() {
+        self.uid = ""
+        self.email = ""
+    }
 }

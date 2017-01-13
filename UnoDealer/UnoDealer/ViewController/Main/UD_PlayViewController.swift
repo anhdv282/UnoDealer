@@ -7,12 +7,16 @@
 //
 
 import UIKit
-
+import FirebaseAuth
 class UD_PlayViewController: UIViewController {
-
+    var user:User!
+    var room:Room!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        FIRAuth.auth()!.addStateDidChangeListener { auth, user in
+            guard let user = user else { return }
+            self.user = User(authData: user)
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -25,6 +29,14 @@ class UD_PlayViewController: UIViewController {
         _ = self.navigationController?.popViewController(animated: true)
     }
 
+    
+    @IBAction func clickClose(_ sender: UIButton) {
+        if room.addedByUser == user.email {
+            print("Close")
+        } else {
+            showAlertView(self, title: "Error", message: "Error")
+        }
+    }
     /*
     // MARK: - Navigation
 

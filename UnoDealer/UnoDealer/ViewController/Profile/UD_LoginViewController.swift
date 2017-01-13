@@ -17,6 +17,7 @@ class UD_LoginViewController: UIViewController {
     @IBOutlet weak var lblPassword: UILabel!
     @IBOutlet weak var constraintTop: NSLayoutConstraint!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.txtUsername.delegate = self
