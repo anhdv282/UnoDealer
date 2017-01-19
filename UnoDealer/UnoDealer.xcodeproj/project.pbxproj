@@ -20,6 +20,8 @@
 		040B97211E1CFF9E00387DCF /* UD_RoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B971F1E1CFF9E00387DCF /* UD_RoomTableViewCell.swift */; };
 		040B97221E1CFF9E00387DCF /* UD_RoomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040B97201E1CFF9E00387DCF /* UD_RoomTableViewCell.xib */; };
 		040B97251E1D069C00387DCF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B97241E1D069C00387DCF /* User.swift */; };
+		043D58941E30B8450079827F /* UD_UserJoinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D58921E30B8450079827F /* UD_UserJoinTableViewCell.swift */; };
+		043D58951E30B8450079827F /* UD_UserJoinTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043D58931E30B8450079827F /* UD_UserJoinTableViewCell.xib */; };
 		045DB7D41E1E491C005F29A0 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045DB7D31E1E491C005F29A0 /* Room.swift */; };
 		0463007F1E1CADCD00C8FC15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463007E1E1CADCD00C8FC15 /* AppDelegate.swift */; };
 		046300841E1CADCD00C8FC15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046300821E1CADCD00C8FC15 /* Main.storyboard */; };
@@ -44,6 +46,8 @@
 		040B971F1E1CFF9E00387DCF /* UD_RoomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UD_RoomTableViewCell.swift; path = ViewController/Main/CustomCell/UD_RoomTableViewCell.swift; sourceTree = "<group>"; };
 		040B97201E1CFF9E00387DCF /* UD_RoomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UD_RoomTableViewCell.xib; path = ViewController/Main/CustomCell/UD_RoomTableViewCell.xib; sourceTree = "<group>"; };
 		040B97241E1D069C00387DCF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
+		043D58921E30B8450079827F /* UD_UserJoinTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UD_UserJoinTableViewCell.swift; path = ViewController/Main/CustomCell/UD_UserJoinTableViewCell.swift; sourceTree = "<group>"; };
+		043D58931E30B8450079827F /* UD_UserJoinTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UD_UserJoinTableViewCell.xib; path = ViewController/Main/CustomCell/UD_UserJoinTableViewCell.xib; sourceTree = "<group>"; };
 		045DB7D31E1E491C005F29A0 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		0463007B1E1CADCD00C8FC15 /* UnoDealer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnoDealer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0463007E1E1CADCD00C8FC15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +114,8 @@
 			children = (
 				040B971F1E1CFF9E00387DCF /* UD_RoomTableViewCell.swift */,
 				040B97201E1CFF9E00387DCF /* UD_RoomTableViewCell.xib */,
+				043D58921E30B8450079827F /* UD_UserJoinTableViewCell.swift */,
+				043D58931E30B8450079827F /* UD_UserJoinTableViewCell.xib */,
 			);
 			name = CustomCell;
 			sourceTree = "<group>";
@@ -240,6 +246,7 @@
 			files = (
 				046300891E1CADCD00C8FC15 /* LaunchScreen.storyboard in Resources */,
 				040B97151E1CED1F00387DCF /* UD_MainViewController.xib in Resources */,
+				043D58951E30B8450079827F /* UD_UserJoinTableViewCell.xib in Resources */,
 				040B97221E1CFF9E00387DCF /* UD_RoomTableViewCell.xib in Resources */,
 				040B97081E1CB37C00387DCF /* UD_LoginViewController.xib in Resources */,
 				046300861E1CADCD00C8FC15 /* Assets.xcassets in Resources */,
@@ -316,6 +323,7 @@
 				040B97211E1CFF9E00387DCF /* UD_RoomTableViewCell.swift in Sources */,
 				0463007F1E1CADCD00C8FC15 /* AppDelegate.swift in Sources */,
 				040B971C1E1CFDA000387DCF /* UD_RoomViewController.swift in Sources */,
+				043D58941E30B8450079827F /* UD_UserJoinTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

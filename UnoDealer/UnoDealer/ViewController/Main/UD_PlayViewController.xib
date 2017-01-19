@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UD_PlayViewController" customModule="UnoDealer" customModuleProvider="target">
             <connections>
+                <outlet property="tableViewUser" destination="mbH-en-QRm" id="Vp9-D8-fbr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,9 +20,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mbH-en-QRm">
-                    <rect key="frame" x="16" y="165" width="343" height="364"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mbH-en-QRm">
+                    <rect key="frame" x="16" y="84" width="343" height="503"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmB-cg-APk">
@@ -32,7 +32,7 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="Y4b-Fh-0gT"/>
                             </constraints>
-                            <state key="normal" title="Button"/>
+                            <state key="normal" title="Back"/>
                             <connections>
                                 <action selector="clickBack:" destination="-1" eventType="touchUpInside" id="hXI-Ag-JW4"/>
                             </connections>
@@ -50,7 +50,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="vVt-bo-uaB"/>
                     </constraints>
-                    <state key="normal" title="Close"/>
+                    <state key="normal" title="JOIN"/>
                     <connections>
                         <action selector="clickClose:" destination="-1" eventType="touchUpInside" id="wrX-KZ-f2l"/>
                     </connections>
@@ -58,12 +58,16 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="mbH-en-QRm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="1r3-PP-WJ5"/>
                 <constraint firstAttribute="trailing" secondItem="hmB-cg-APk" secondAttribute="trailing" id="5Tu-FY-bRO"/>
                 <constraint firstItem="hmB-cg-APk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="7gR-Nf-Exe"/>
                 <constraint firstItem="vvE-5C-4Ys" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="AI9-W7-XBF"/>
+                <constraint firstItem="vvE-5C-4Ys" firstAttribute="top" secondItem="mbH-en-QRm" secondAttribute="bottom" constant="20" id="Fq0-W8-Ylo"/>
+                <constraint firstAttribute="trailing" secondItem="mbH-en-QRm" secondAttribute="trailing" constant="16" id="KdM-cN-gti"/>
                 <constraint firstItem="hmB-cg-APk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VUn-4h-0gg"/>
                 <constraint firstAttribute="trailing" secondItem="vvE-5C-4Ys" secondAttribute="trailing" id="hls-a0-8jJ"/>
                 <constraint firstAttribute="bottom" secondItem="vvE-5C-4Ys" secondAttribute="bottom" id="o3W-a9-qUn"/>
+                <constraint firstItem="mbH-en-QRm" firstAttribute="top" secondItem="hmB-cg-APk" secondAttribute="bottom" constant="20" id="onC-Vl-N8V"/>
             </constraints>
             <point key="canvasLocation" x="25.5" y="52.5"/>
         </view>

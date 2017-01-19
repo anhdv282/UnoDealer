@@ -53,7 +53,7 @@ class UD_RoomViewController: UIViewController {
             UIAlertAction in
             let date = NSDate()
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd MM yyyy - HH:mm"
+            dateFormatter.dateFormat = "dd MMM yyyy - HH:mm"
             let dateString = dateFormatter.string(from: date as Date)
             // 2
             let groceryItem = Room(date: dateString, addedByUser: self.user.email, completed: false)

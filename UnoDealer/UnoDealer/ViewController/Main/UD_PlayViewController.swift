@@ -11,6 +11,9 @@ import FirebaseAuth
 class UD_PlayViewController: UIViewController {
     var user:User!
     var room:Room!
+    var listUserJoin:[User] = [User]()
+    
+    @IBOutlet weak var tableViewUser: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         FIRAuth.auth()!.addStateDidChangeListener { auth, user in
@@ -37,14 +40,16 @@ class UD_PlayViewController: UIViewController {
             showAlertView(self, title: "Error", message: "Error")
         }
     }
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+extension UD_PlayViewController : UITableViewDelegate,UITableViewDataSource {
+    // datasource
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return listUserJoin.count
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UD_UserJoinTableViewCell", for: indexPath as IndexPath) as! UD_UserJoinTableViewCell
+        return cell
+    }
 }
