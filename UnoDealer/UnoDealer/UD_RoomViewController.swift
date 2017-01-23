@@ -51,17 +51,18 @@ class UD_RoomViewController: UIViewController {
         // Create the actions
         let addAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.default) {
             UIAlertAction in
-            let date = NSDate()
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd MMM yyyy - HH:mm"
-            let dateString = dateFormatter.string(from: date as Date)
-            // 2
-            let groceryItem = Room(date: dateString, addedByUser: self.user.email, completed: false)
-            // 3
-            let groceryItemRef = self.ref.child(dateString)
-            
-            // 4
-            groceryItemRef.setValue(groceryItem.toAnyObject())
+//            let date = NSDate()
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateFormat = "dd MMM yyyy - HH:mm"
+//            let dateString = dateFormatter.string(from: date as Date)
+//            // 2
+//            let groceryItem = Room(date: date.timeIntervalSince1970, addedByUser: self.user.uid, completed: false)
+//            // 3
+//            let groceryItemRef = self.ref.child(dateString)
+//            
+//            // 4
+//            groceryItemRef.setValue(groceryItem.toAnyObject())
+            self.addNewRoom()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
             UIAlertAction in
@@ -80,6 +81,36 @@ class UD_RoomViewController: UIViewController {
         _ = self.navigationController?.popViewController(animated: true)
     }
     
+    func addNewRoom() {
+        ref.runTransactionBlock({ (currentData: FIRMutableData) -> FIRTransactionResult in
+            if var post = currentData.value as? [String : AnyObject], let uid = FIRAuth.auth()?.currentUser?.uid {
+                var rooms: Dictionary<String, Bool>
+                rooms = post["rooms"] as? [String : Bool] ?? [:]
+                var roomCount = post["roomCount"] as? Int ?? 0
+                if let _ = rooms[uid] {
+                    // Unstar the post and remove self from stars
+                    roomCount -= 1
+                    rooms.removeValue(forKey: uid)
+                } else {
+                    // Star the post and add self to stars
+                    roomCount += 1
+                    rooms[uid] = true
+                }
+                post["roomCount"] = roomCount as AnyObject?
+                post["rooms"] = rooms as AnyObject?
+                
+                // Set value and report transaction success
+                currentData.value = post
+                
+                return FIRTransactionResult.success(withValue: currentData)
+            }
+            return FIRTransactionResult.success(withValue: currentData)
+        }) { (error, committed, snapshot) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
 
 extension UD_RoomViewController : UITableViewDelegate,UITableViewDataSource {
@@ -90,7 +121,7 @@ extension UD_RoomViewController : UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UD_RoomTableViewCell", for: indexPath as IndexPath) as! UD_RoomTableViewCell
-        cell.lblDate.text = listRoom[indexPath.row].date
+        cell.lblDate.text = convertDateToString(date: listRoom[indexPath.row].date)
         cell.lblStatus.text = listRoom[indexPath.row].completed ? "Closed" : "Open"
         return cell
     }
@@ -123,7 +154,7 @@ extension UD_RoomViewController : UITableViewDelegate,UITableViewDataSource {
                 // Create the actions
                 let closeAction = UIAlertAction(title: "Close", style: UIAlertActionStyle.default) {
                     UIAlertAction in
-                    self.ref.child(self.listRoom[indexPath.row].date).updateChildValues(["completed":true])
+//                    self.ref.child(self.listRoom[indexPath.row].date).updateChildValues(["completed":true])
                     self.myTableView.reloadData()
                 }
                 let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {

@@ -19,6 +19,8 @@ class UD_SignUpViewController: UIViewController {
     @IBOutlet weak var txtConfirmPassword: UITextField!
     
     @IBOutlet weak var constraintTop: NSLayoutConstraint!
+    
+    let ref = FIRDatabase.database().reference(withPath: "users")
     override func viewDidLoad() {
         super.viewDidLoad()
         txtUsername.delegate = self
@@ -51,6 +53,17 @@ class UD_SignUpViewController: UIViewController {
                 if error == nil {
                     FIRAuth.auth()?.signIn(withEmail: self.txtUsername.text!, password: self.txtPassword.text!) { (user, error) in
                         if error == nil {
+                            let date = NSDate()
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "dd MMM yyyy - HH:mm"
+                            let dateString = dateFormatter.string(from: date as Date)
+                            
+                            let udUser = UD_User(dateJoined: dateString, username: self.txtUsername.text ?? "", isActive: true, income: 0)
+                            // 3
+                            let udUserRef = self.ref.child(self.txtUsername.text ?? "")
+                            
+                            // 4
+                            udUserRef.setValue(udUser.toAnyObject())
                             self.moveToMainView(username: (user?.email)!)
                         } else {
                             showAlertView(self, title: "Cannot register", message: "\(error)")

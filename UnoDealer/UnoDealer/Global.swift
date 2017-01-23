@@ -8,7 +8,11 @@
 
 import Foundation
 import UIKit
-
+//static global
+let EMAIL = "email"
+let PASSWORD = "password"
+//
+var mode:AMLoginSignupViewMode = .signup
 func showAlertView(_ viewController : UIViewController, title : String, message : String) {
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
@@ -20,4 +24,46 @@ func isValidEmail(_ testStr:String) -> Bool {
     
     let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
     return emailTest.evaluate(with: testStr)
+}
+
+func convertDateToString(date: Double) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "dd MMM yyyy - HH:mm"
+    return dateFormatter.string(from: Date(timeIntervalSince1970: date) as Date) ?? ""
+}
+
+enum AMLoginSignupViewMode {
+    case login
+    case signup
+}
+
+extension UIView {
+    @IBInspectable var cornerRadius: CGFloat {
+        get {
+            return layer.cornerRadius
+        }
+        set {
+            layer.cornerRadius = newValue
+            layer.masksToBounds = newValue > 0
+        }
+    }
+}
+
+private protocol _Optional {//http://stackoverflow.com/questions/25846561/swift-printing-optional-variable
+    func unwrappedString() -> String
+}
+
+extension Optional: _Optional {
+    fileprivate func unwrappedString() -> String {
+        switch self {
+        case .some(let wrapped as _Optional): return wrapped.unwrappedString()
+        case .some(let wrapped): return String(describing: wrapped)
+        case .none: return String(describing: self)
+        }
+    }
+}
+
+postfix operator ~?
+public postfix func ~? <X> (x: X?) -> String {
+    return x.unwrappedString()
 }

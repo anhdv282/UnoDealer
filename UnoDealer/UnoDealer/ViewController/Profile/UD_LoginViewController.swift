@@ -8,6 +8,8 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
+import Firebase
 import MBProgressHUD
 class UD_LoginViewController: UIViewController {
     @IBOutlet weak var txtUsername: UITextField!

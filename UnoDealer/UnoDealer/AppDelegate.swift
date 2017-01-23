@@ -16,14 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FIRApp.configure()
         self.window = UIApplication.shared.keyWindow
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let viewController = UD_LoginViewController(nibName: "UD_LoginViewController", bundle: nil)
+        let viewController = UD_LoginSignUpViewController(nibName: "UD_LoginSignUpViewController", bundle: nil)
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.navigationBar.isHidden = true
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
-        FIRApp.configure()
+        
         return true
     }
 

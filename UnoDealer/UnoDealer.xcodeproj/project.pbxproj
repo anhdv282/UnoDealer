@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		040B96FA1E1CB01500387DCF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 040B96F91E1CB01500387DCF /* GoogleService-Info.plist */; };
-		040B97071E1CB37C00387DCF /* UD_LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B97051E1CB37C00387DCF /* UD_LoginViewController.swift */; };
-		040B97081E1CB37C00387DCF /* UD_LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040B97061E1CB37C00387DCF /* UD_LoginViewController.xib */; };
-		040B970B1E1CD5AD00387DCF /* UD_SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B97091E1CD5AD00387DCF /* UD_SignUpViewController.swift */; };
-		040B970C1E1CD5AD00387DCF /* UD_SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040B970A1E1CD5AD00387DCF /* UD_SignUpViewController.xib */; };
 		040B97141E1CED1F00387DCF /* UD_MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B97121E1CED1F00387DCF /* UD_MainViewController.swift */; };
 		040B97151E1CED1F00387DCF /* UD_MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040B97131E1CED1F00387DCF /* UD_MainViewController.xib */; };
 		040B97191E1CEF6800387DCF /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B97181E1CEF6800387DCF /* Global.swift */; };
@@ -29,15 +25,16 @@
 		046300891E1CADCD00C8FC15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046300871E1CADCD00C8FC15 /* LaunchScreen.storyboard */; };
 		047997611E24D0E0002E115C /* UD_PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479975F1E24D0E0002E115C /* UD_PlayViewController.swift */; };
 		047997621E24D0E0002E115C /* UD_PlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047997601E24D0E0002E115C /* UD_PlayViewController.xib */; };
+		048041681E359F5000620F33 /* UD_User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048041671E359F5000620F33 /* UD_User.swift */; };
+		0480416B1E35A98100620F33 /* UD_LoginSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048041691E35A98100620F33 /* UD_LoginSignUpViewController.swift */; };
+		0480416C1E35A98100620F33 /* UD_LoginSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0480416A1E35A98100620F33 /* UD_LoginSignUpViewController.xib */; };
+		048041711E35B93B00620F33 /* AMInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0480416F1E35B93B00620F33 /* AMInputView.swift */; };
+		048041721E35B93B00620F33 /* AMInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048041701E35B93B00620F33 /* AMInputView.xib */; };
 		A1DFE96693645F5D207460D6 /* Pods_UnoDealer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64ACBAEF6ABD12A78F6AA4B2 /* Pods_UnoDealer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		040B96F91E1CB01500387DCF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		040B97051E1CB37C00387DCF /* UD_LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UD_LoginViewController.swift; path = ViewController/Profile/UD_LoginViewController.swift; sourceTree = "<group>"; };
-		040B97061E1CB37C00387DCF /* UD_LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UD_LoginViewController.xib; path = ViewController/Profile/UD_LoginViewController.xib; sourceTree = "<group>"; };
-		040B97091E1CD5AD00387DCF /* UD_SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UD_SignUpViewController.swift; path = ViewController/Profile/UD_SignUpViewController.swift; sourceTree = "<group>"; };
-		040B970A1E1CD5AD00387DCF /* UD_SignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UD_SignUpViewController.xib; path = ViewController/Profile/UD_SignUpViewController.xib; sourceTree = "<group>"; };
 		040B97121E1CED1F00387DCF /* UD_MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UD_MainViewController.swift; path = ViewController/Main/UD_MainViewController.swift; sourceTree = "<group>"; };
 		040B97131E1CED1F00387DCF /* UD_MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UD_MainViewController.xib; path = ViewController/Main/UD_MainViewController.xib; sourceTree = "<group>"; };
 		040B97181E1CEF6800387DCF /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
@@ -58,6 +55,11 @@
 		0479975D1E24C059002E115C /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = "../../../../Library/Developer/Xcode/DerivedData/UnoDealer-akkqiwppxbbgxidpqnyzqtwcvpff/Build/Products/Debug-iphoneos/NVActivityIndicatorView/NVActivityIndicatorView.framework"; sourceTree = "<group>"; };
 		0479975F1E24D0E0002E115C /* UD_PlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UD_PlayViewController.swift; path = ViewController/Main/UD_PlayViewController.swift; sourceTree = "<group>"; };
 		047997601E24D0E0002E115C /* UD_PlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UD_PlayViewController.xib; path = ViewController/Main/UD_PlayViewController.xib; sourceTree = "<group>"; };
+		048041671E359F5000620F33 /* UD_User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UD_User.swift; path = Model/UD_User.swift; sourceTree = "<group>"; };
+		048041691E35A98100620F33 /* UD_LoginSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UD_LoginSignUpViewController.swift; path = ViewController/Profile/UD_LoginSignUpViewController.swift; sourceTree = "<group>"; };
+		0480416A1E35A98100620F33 /* UD_LoginSignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UD_LoginSignUpViewController.xib; path = ViewController/Profile/UD_LoginSignUpViewController.xib; sourceTree = "<group>"; };
+		0480416F1E35B93B00620F33 /* AMInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMInputView.swift; sourceTree = "<group>"; };
+		048041701E35B93B00620F33 /* AMInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMInputView.xib; sourceTree = "<group>"; };
 		084133E7CEBA60B61C3D704F /* Pods-UnoDealer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnoDealer.release.xcconfig"; path = "Pods/Target Support Files/Pods-UnoDealer/Pods-UnoDealer.release.xcconfig"; sourceTree = "<group>"; };
 		64ACBAEF6ABD12A78F6AA4B2 /* Pods_UnoDealer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnoDealer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFF831274A777D32D8AAFA8D /* Pods-UnoDealer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnoDealer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UnoDealer/Pods-UnoDealer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -87,10 +89,8 @@
 		040B96FC1E1CB2DA00387DCF /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				040B97051E1CB37C00387DCF /* UD_LoginViewController.swift */,
-				040B97061E1CB37C00387DCF /* UD_LoginViewController.xib */,
-				040B97091E1CD5AD00387DCF /* UD_SignUpViewController.swift */,
-				040B970A1E1CD5AD00387DCF /* UD_SignUpViewController.xib */,
+				048041691E35A98100620F33 /* UD_LoginSignUpViewController.swift */,
+				0480416A1E35A98100620F33 /* UD_LoginSignUpViewController.xib */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -125,6 +125,7 @@
 			children = (
 				040B97241E1D069C00387DCF /* User.swift */,
 				045DB7D31E1E491C005F29A0 /* Room.swift */,
+				048041671E359F5000620F33 /* UD_User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -150,17 +151,35 @@
 		0463007D1E1CADCD00C8FC15 /* UnoDealer */ = {
 			isa = PBXGroup;
 			children = (
+				0480416D1E35B92600620F33 /* ThirdParty */,
 				040B97231E1D067F00387DCF /* Model */,
 				040B96FB1E1CB2CE00387DCF /* ViewController */,
 				0463007E1E1CADCD00C8FC15 /* AppDelegate.swift */,
+				040B97181E1CEF6800387DCF /* Global.swift */,
 				046300821E1CADCD00C8FC15 /* Main.storyboard */,
 				046300851E1CADCD00C8FC15 /* Assets.xcassets */,
 				046300871E1CADCD00C8FC15 /* LaunchScreen.storyboard */,
 				0463008A1E1CADCD00C8FC15 /* Info.plist */,
 				040B96F91E1CB01500387DCF /* GoogleService-Info.plist */,
-				040B97181E1CEF6800387DCF /* Global.swift */,
 			);
 			path = UnoDealer;
+			sourceTree = "<group>";
+		};
+		0480416D1E35B92600620F33 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				0480416E1E35B93B00620F33 /* AMInputView */,
+			);
+			name = ThirdParty;
+			sourceTree = "<group>";
+		};
+		0480416E1E35B93B00620F33 /* AMInputView */ = {
+			isa = PBXGroup;
+			children = (
+				0480416F1E35B93B00620F33 /* AMInputView.swift */,
+				048041701E35B93B00620F33 /* AMInputView.xib */,
+			);
+			path = AMInputView;
 			sourceTree = "<group>";
 		};
 		4D8CB02AB941557E42C83677 /* Frameworks */ = {
@@ -247,13 +266,13 @@
 				046300891E1CADCD00C8FC15 /* LaunchScreen.storyboard in Resources */,
 				040B97151E1CED1F00387DCF /* UD_MainViewController.xib in Resources */,
 				043D58951E30B8450079827F /* UD_UserJoinTableViewCell.xib in Resources */,
+				048041721E35B93B00620F33 /* AMInputView.xib in Resources */,
 				040B97221E1CFF9E00387DCF /* UD_RoomTableViewCell.xib in Resources */,
-				040B97081E1CB37C00387DCF /* UD_LoginViewController.xib in Resources */,
 				046300861E1CADCD00C8FC15 /* Assets.xcassets in Resources */,
+				0480416C1E35A98100620F33 /* UD_LoginSignUpViewController.xib in Resources */,
 				046300841E1CADCD00C8FC15 /* Main.storyboard in Resources */,
 				040B96FA1E1CB01500387DCF /* GoogleService-Info.plist in Resources */,
 				040B971D1E1CFDA000387DCF /* UD_RoomViewController.xib in Resources */,
-				040B970C1E1CD5AD00387DCF /* UD_SignUpViewController.xib in Resources */,
 				047997621E24D0E0002E115C /* UD_PlayViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,14 +335,15 @@
 				040B97141E1CED1F00387DCF /* UD_MainViewController.swift in Sources */,
 				047997611E24D0E0002E115C /* UD_PlayViewController.swift in Sources */,
 				040B97191E1CEF6800387DCF /* Global.swift in Sources */,
-				040B970B1E1CD5AD00387DCF /* UD_SignUpViewController.swift in Sources */,
 				045DB7D41E1E491C005F29A0 /* Room.swift in Sources */,
-				040B97071E1CB37C00387DCF /* UD_LoginViewController.swift in Sources */,
 				040B97251E1D069C00387DCF /* User.swift in Sources */,
+				048041681E359F5000620F33 /* UD_User.swift in Sources */,
 				040B97211E1CFF9E00387DCF /* UD_RoomTableViewCell.swift in Sources */,
 				0463007F1E1CADCD00C8FC15 /* AppDelegate.swift in Sources */,
 				040B971C1E1CFDA000387DCF /* UD_RoomViewController.swift in Sources */,
+				048041711E35B93B00620F33 /* AMInputView.swift in Sources */,
 				043D58941E30B8450079827F /* UD_UserJoinTableViewCell.swift in Sources */,
+				0480416B1E35A98100620F33 /* UD_LoginSignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,16 +8,17 @@
 
 import Foundation
 import FirebaseDatabase
+import FirebaseAuth
 
 struct Room {
     
     let key: String
-    let date: String
+    let date: Double
     let addedByUser: String
     let ref: FIRDatabaseReference?
     var completed: Bool
     
-    init(date: String, addedByUser: String, completed: Bool, key: String = "") {
+    init(date: Double, addedByUser: String, completed: Bool, key: String = "") {
         self.key = key
         self.addedByUser = addedByUser
         self.completed = completed
@@ -28,7 +29,7 @@ struct Room {
     init(snapshot: FIRDataSnapshot) {
         key = snapshot.key
         let snapshotValue = snapshot.value as! [String: AnyObject]
-        date = snapshotValue["date"] as! String
+        date = snapshotValue["date"] as! Double
         addedByUser = snapshotValue["addedByUser"] as! String
         completed = snapshotValue["completed"] as! Bool
         ref = snapshot.ref
@@ -41,5 +42,6 @@ struct Room {
             "completed": completed
         ]
     }
-    
 }
+
+
