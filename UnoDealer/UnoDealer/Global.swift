@@ -28,7 +28,7 @@ func isValidEmail(_ testStr:String) -> Bool {
 
 func convertDateToString(date: Double) -> String {
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "dd MMM yyyy - HH:mm"
+    dateFormatter.dateFormat = "dd MMM yyyy - HH:mm:ss"
     return dateFormatter.string(from: Date(timeIntervalSince1970: date) as Date) ?? ""
 }
 

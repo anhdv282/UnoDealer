@@ -25,7 +25,7 @@ class UD_RoomViewController: UIViewController {
             self.user = User(authData: user)
         }
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        ref.queryOrdered(byChild: "completed").observe(.value, with: { snapshot in
+        ref.queryOrdered(byChild: "date").observe(.value, with: { snapshot in
             var newItems: [Room] = []
             
             for item in snapshot.children {
@@ -33,7 +33,7 @@ class UD_RoomViewController: UIViewController {
                 newItems.append(groceryItem)
             }
             
-            self.listRoom = newItems
+            self.listRoom = newItems.reversed()
             self.myTableView.reloadData()
             MBProgressHUD.hide(for: self.view, animated: true)
         })
@@ -51,18 +51,18 @@ class UD_RoomViewController: UIViewController {
         // Create the actions
         let addAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.default) {
             UIAlertAction in
-//            let date = NSDate()
+            let date = NSDate()
 //            let dateFormatter = DateFormatter()
 //            dateFormatter.dateFormat = "dd MMM yyyy - HH:mm"
 //            let dateString = dateFormatter.string(from: date as Date)
-//            // 2
-//            let groceryItem = Room(date: date.timeIntervalSince1970, addedByUser: self.user.uid, completed: false)
-//            // 3
+            // 2
+            let groceryItem = Room(date: date.timeIntervalSince1970, addedByUser: self.user.uid, completed: false)
+            // 3
 //            let groceryItemRef = self.ref.child(dateString)
-//            
-//            // 4
-//            groceryItemRef.setValue(groceryItem.toAnyObject())
-            self.addNewRoom()
+            let groceryItemRef = self.ref.childByAutoId()
+            // 4
+            groceryItemRef.setValue(groceryItem.toAnyObject())
+//            self.addNewRoom()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
             UIAlertAction in
@@ -80,37 +80,7 @@ class UD_RoomViewController: UIViewController {
     @IBAction func clickBack(_ sender: UIButton) {
         _ = self.navigationController?.popViewController(animated: true)
     }
-    
-    func addNewRoom() {
-        ref.runTransactionBlock({ (currentData: FIRMutableData) -> FIRTransactionResult in
-            if var post = currentData.value as? [String : AnyObject], let uid = FIRAuth.auth()?.currentUser?.uid {
-                var rooms: Dictionary<String, Bool>
-                rooms = post["rooms"] as? [String : Bool] ?? [:]
-                var roomCount = post["roomCount"] as? Int ?? 0
-                if let _ = rooms[uid] {
-                    // Unstar the post and remove self from stars
-                    roomCount -= 1
-                    rooms.removeValue(forKey: uid)
-                } else {
-                    // Star the post and add self to stars
-                    roomCount += 1
-                    rooms[uid] = true
-                }
-                post["roomCount"] = roomCount as AnyObject?
-                post["rooms"] = rooms as AnyObject?
-                
-                // Set value and report transaction success
-                currentData.value = post
-                
-                return FIRTransactionResult.success(withValue: currentData)
-            }
-            return FIRTransactionResult.success(withValue: currentData)
-        }) { (error, committed, snapshot) in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-        }
-    }
+
 }
 
 extension UD_RoomViewController : UITableViewDelegate,UITableViewDataSource {
@@ -147,14 +117,14 @@ extension UD_RoomViewController : UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Close") { (action, indexPath) in
             // delete item at indexPath
-            if self.listRoom[indexPath.row].addedByUser == self.user.email {
+            if self.listRoom[indexPath.row].addedByUser == self.user.uid {
                 // Create the alert controller
                 let alertController = UIAlertController(title: "", message: "Do you want close ?", preferredStyle: .alert)
                 
                 // Create the actions
                 let closeAction = UIAlertAction(title: "Close", style: UIAlertActionStyle.default) {
                     UIAlertAction in
-//                    self.ref.child(self.listRoom[indexPath.row].date).updateChildValues(["completed":true])
+                    self.ref.child(self.listRoom[indexPath.row].key).updateChildValues(["completed":true])
                     self.myTableView.reloadData()
                 }
                 let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {

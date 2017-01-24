@@ -67,7 +67,13 @@ class UD_LoginSignUpViewController: UIViewController {
         // set view to login mode
         toggleViewMode(animated: false)
         self.loginEmailInputView.textFieldView.text = userDefaults.string(forKey: EMAIL) ?? ""
+        if userDefaults.string(forKey: EMAIL) != "" {
+            self.loginEmailInputView.labelView.text = ""
+        }
         self.loginPasswordInputView.textFieldView.text = userDefaults.string(forKey: PASSWORD) ?? ""
+        if userDefaults.string(forKey: PASSWORD) != "" {
+            self.loginPasswordInputView.labelView.text = ""
+        }
         //add keyboard notification
         NotificationCenter.default.addObserver(self, selector: #selector(keyboarFrameChange(notification:)), name: .UIKeyboardWillChangeFrame, object: nil)
     }
@@ -111,7 +117,7 @@ class UD_LoginSignUpViewController: UIViewController {
         if mode == .login {
             toggleViewMode(animated: true)
         }else{
-            MBProgressHUD.showAdded(to: self.view, animated: true)
+            
             if signupEmailInputView.textFieldView.text == nil || signupEmailInputView.textFieldView.text == "" {
                 showAlertView(self, title: "", message: "Please fill in email field to continue")
                 signupEmailInputView.textFieldView.becomeFirstResponder()
@@ -126,6 +132,7 @@ class UD_LoginSignUpViewController: UIViewController {
             } else if !isValidEmail(signupEmailInputView.textFieldView.text ?? "") {
                 showAlertView(self, title: "", message: "Email is invalid!")
             } else {
+                MBProgressHUD.showAdded(to: self.view, animated: true)
                 FIRAuth.auth()?.createUser(withEmail: signupEmailInputView.textFieldView.text!, password: signupPasswordInputView.textFieldView.text!) { (user, error) in
                     if error == nil {
                         FIRAuth.auth()?.signIn(withEmail: self.signupEmailInputView.textFieldView.text!, password: self.signupPasswordInputView.textFieldView.text!) { (user, error) in
@@ -146,11 +153,11 @@ class UD_LoginSignUpViewController: UIViewController {
                             } else {
                                 showAlertView(self, title: "Cannot register", message: "\(error)")
                             }
-                            MBProgressHUD.hide(for: self.view, animated: true)
                         }
                     } else {
                         showAlertView(self, title: "Cannot register", message: "\(error!.localizedDescription~?)")
                     }
+                    MBProgressHUD.hide(for: self.view, animated: true)
                 }
             }
             //TODO: signup by this data
