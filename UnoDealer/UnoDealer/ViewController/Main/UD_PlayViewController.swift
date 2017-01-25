@@ -8,11 +8,13 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
+import MBProgressHUD
 class UD_PlayViewController: UIViewController {
     var user:User!
     var room:Room!
-    var listUserJoin:[User] = [User]()
-    
+    var listUserJoin:[UD_User] = [UD_User]()
+    let refUsers = FIRDatabase.database().reference(withPath: "users")
     @IBOutlet weak var tableViewUser: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,19 @@ class UD_PlayViewController: UIViewController {
             guard let user = user else { return }
             self.user = User(authData: user)
         }
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        refUsers.queryOrdered(byChild: "date").observe(.value, with: { snapshot in
+            var newItems: [UD_User] = [UD_User]()
+            
+            for item in snapshot.children {
+                let groceryItem = UD_User(snapshot: item as! FIRDataSnapshot)
+                newItems.append(groceryItem)
+            }
+            
+            self.listUserJoin = newItems.reversed()
+            self.tableViewUser.reloadData()
+            MBProgressHUD.hide(for: self.view, animated: true)
+        })
         // Do any additional setup after loading the view.
     }
 
@@ -34,11 +49,7 @@ class UD_PlayViewController: UIViewController {
 
     
     @IBAction func clickClose(_ sender: UIButton) {
-        if room.addedByUser == user.email {
-            print("Close")
-        } else {
-            showAlertView(self, title: "Error", message: "Error")
-        }
+        
     }
 }
 
