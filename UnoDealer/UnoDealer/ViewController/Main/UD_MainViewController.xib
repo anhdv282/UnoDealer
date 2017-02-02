@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UD_MainViewController" customModule="UnoDealer" customModuleProvider="target">
             <connections>
                 <outlet property="lblUsername" destination="3vS-ai-dey" id="JAJ-x2-jS3"/>
+                <outlet property="tableViewUsers" destination="Hjd-gW-upC" id="N2a-8y-NPK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -42,20 +43,24 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCj-Dg-OVH">
-                    <rect key="frame" x="167.5" y="119" width="39" height="21"/>
+                    <rect key="frame" x="167.5" y="84" width="39" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3vS-ai-dey">
-                    <rect key="frame" x="167" y="148" width="42" height="21"/>
+                    <rect key="frame" x="167" y="113" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hjd-gW-upC">
-                    <rect key="frame" x="16" y="177" width="343" height="412"/>
+                    <rect key="frame" x="16" y="174" width="343" height="415"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="jpv-u1-XlY"/>
+                        <outlet property="delegate" destination="-1" id="q3W-Xz-JMF"/>
+                    </connections>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l9N-da-aF4">
                     <rect key="frame" x="16" y="597" width="342" height="30"/>
@@ -64,23 +69,33 @@
                         <action selector="clickJoin:" destination="-1" eventType="touchUpInside" id="fuh-ub-JmI"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jq6-SE-h8Z">
+                    <rect key="frame" x="16" y="139" width="342" height="30"/>
+                    <state key="normal" title="Add new player"/>
+                    <connections>
+                        <action selector="clickAddNewPlayer:" destination="-1" eventType="touchUpInside" id="jxL-fw-oYk"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="tVr-70-usA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="3uc-9V-PYB"/>
-                <constraint firstItem="Hjd-gW-upC" firstAttribute="top" secondItem="3vS-ai-dey" secondAttribute="bottom" constant="8" id="45W-gn-RUh"/>
                 <constraint firstItem="l9N-da-aF4" firstAttribute="top" secondItem="Hjd-gW-upC" secondAttribute="bottom" constant="8" id="4OT-PV-Cgz"/>
                 <constraint firstItem="Hjd-gW-upC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="5ai-yn-wdq"/>
                 <constraint firstItem="SCj-Dg-OVH" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7UW-DM-jOE"/>
-                <constraint firstItem="SCj-Dg-OVH" firstAttribute="top" secondItem="tVr-70-usA" secondAttribute="bottom" constant="55" id="Afi-HM-cpl"/>
+                <constraint firstItem="Hjd-gW-upC" firstAttribute="top" secondItem="Jq6-SE-h8Z" secondAttribute="bottom" constant="5" id="AeS-v7-gXA"/>
+                <constraint firstItem="SCj-Dg-OVH" firstAttribute="top" secondItem="tVr-70-usA" secondAttribute="bottom" constant="20" id="Afi-HM-cpl"/>
+                <constraint firstItem="Jq6-SE-h8Z" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="KD6-Ct-auP"/>
                 <constraint firstItem="l9N-da-aF4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="Keg-VX-cCW"/>
                 <constraint firstItem="3vS-ai-dey" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="NxY-UL-TXi"/>
+                <constraint firstItem="Jq6-SE-h8Z" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="PoL-Uc-970"/>
                 <constraint firstAttribute="bottom" secondItem="l9N-da-aF4" secondAttribute="bottom" constant="40" id="chn-W1-LwZ"/>
                 <constraint firstItem="3vS-ai-dey" firstAttribute="top" secondItem="SCj-Dg-OVH" secondAttribute="bottom" constant="8" id="g7R-86-i3A"/>
                 <constraint firstAttribute="trailing" secondItem="tVr-70-usA" secondAttribute="trailing" id="lB5-86-W7V"/>
                 <constraint firstAttribute="trailing" secondItem="Hjd-gW-upC" secondAttribute="trailing" constant="16" id="mtv-SA-64R"/>
                 <constraint firstItem="l9N-da-aF4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="nY7-y1-FHS"/>
                 <constraint firstItem="tVr-70-usA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="t9w-JD-2e2"/>
+                <constraint firstItem="Jq6-SE-h8Z" firstAttribute="top" secondItem="3vS-ai-dey" secondAttribute="bottom" constant="5" id="yCr-MT-DVR"/>
             </constraints>
             <point key="canvasLocation" x="26.5" y="52.5"/>
         </view>

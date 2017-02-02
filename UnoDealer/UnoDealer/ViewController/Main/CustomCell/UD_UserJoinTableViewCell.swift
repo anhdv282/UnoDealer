@@ -12,6 +12,7 @@ class UD_UserJoinTableViewCell: UITableViewCell {
 
     @IBOutlet weak var username: UILabel!
     
+    @IBOutlet weak var txtCards: UITextField!
     @IBOutlet weak var amount: UILabel!
     
     override func awakeFromNib() {

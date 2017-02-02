@@ -103,6 +103,7 @@ class UD_LoginSignUpViewController: UIViewController {
                     MBProgressHUD.hide(for: self.view, animated: true)
                     if error == nil {
                         self.setUserDefaults(email: self.signupEmailInputView.textFieldView.text!, password: self.signupPasswordInputView.textFieldView.text!)
+                        self.setUserDefaults(email: self.signupEmailInputView.textFieldView.text!, password: self.signupPasswordInputView.textFieldView.text!)
                         self.moveToMainView(username: (user?.email)!)
                     } else {
                         showAlertView(self, title: "", message: "\(error!.localizedDescription~?)")
@@ -138,11 +139,8 @@ class UD_LoginSignUpViewController: UIViewController {
                         FIRAuth.auth()?.signIn(withEmail: self.signupEmailInputView.textFieldView.text!, password: self.signupPasswordInputView.textFieldView.text!) { (user, error) in
                             if error == nil {
                                 let date = NSDate()
-                                let dateFormatter = DateFormatter()
-                                dateFormatter.dateFormat = "dd MMM yyyy - HH:mm"
-                                let dateString = dateFormatter.string(from: date as Date)
                                 
-                                let udUser = UD_User(dateJoined: dateString, username: self.signupEmailInputView.textFieldView.text ?? "", isActive: true, income: 0)
+                                let udUser = UD_User(dateJoined: date.timeIntervalSince1970, email : self.signupEmailInputView.textFieldView.text ?? "", username: self.signupEmailInputView.textFieldView.text ?? "", isActive: true, income: 0)
                                 // 3
                                 let udUserRef = self.ref.child(user?.uid ?? "")
                                 

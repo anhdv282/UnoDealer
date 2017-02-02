@@ -102,7 +102,7 @@ extension UD_RoomViewController : UITableViewDelegate,UITableViewDataSource {
         playVC.room = listRoom[indexPath.row]
         self.navigationController?.pushViewController(playVC, animated: true)
         } else {
-            showAlertView(self, title: "", message: "This session is closed")
+            showAlertView(self, title: "", message: "This game is closed")
         }
     }
     
