@@ -78,6 +78,39 @@ class UD_PlayViewController: UIViewController {
     }
 }
 
+extension UD_PlayViewController : UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        addToolBar(textField: textField)
+        return true
+    }
+    
+    func addToolBar(textField: UITextField) {
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor(red: 76 / 255, green: 217 / 255, blue: 100 / 255, alpha: 1)
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(donePressed))
+        
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolBar.setItems([spaceButton, doneButton], animated: false)
+        
+        
+        toolBar.isUserInteractionEnabled = true
+        toolBar.sizeToFit()
+        
+        textField.delegate = self
+        textField.inputAccessoryView = toolBar
+    }
+    
+    func donePressed() {
+        view.endEditing(true)
+    }
+    
+    func cancelPressed() {
+        view.endEditing(true) // or do something
+    }
+}
+
 extension UD_PlayViewController : UITableViewDelegate,UITableViewDataSource {
     // datasource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -87,6 +120,7 @@ extension UD_PlayViewController : UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UD_UserJoinTableViewCell", for: indexPath as IndexPath) as! UD_UserJoinTableViewCell
         cell.txtCards.isHidden = false
+        cell.txtCards.delegate = self
         cell.amount.isHidden = true
         cell.username.text = listUserJoin[indexPath.row].username
         return cell
@@ -101,16 +135,25 @@ extension UD_PlayViewController : UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
+        let cell = tableView.cellForRow(at: indexPath) as? UD_UserJoinTableViewCell
         let delete = UITableViewRowAction(style: .normal, title: "No Joined") { (action, indexPath) in
             self.listUserJoin.remove(at: indexPath.row)
             self.tableViewUser.reloadData()
         }
         let winner = UITableViewRowAction(style: .destructive, title: "Winner") { (action, indexPath) in
-            
-            self.listUserJoin[indexPath.row].isWinner = !self.listUserJoin[indexPath.row].isWinner
-            tableView.cellForRow(at: indexPath)?.backgroundColor = self.listUserJoin[indexPath.row].isWinner ? UIColor.red:UIColor.clear
-            self.tableViewUser.reloadData()
+//            self.listUserJoin.contains(where: $0.)
+//            var haveWinner = false
+//            for u in self.listUserJoin {
+//                if u.isWinner {
+//                    haveWinner = true
+//                }
+//            }
+//            if haveWinner {
+                self.listUserJoin[indexPath.row].isWinner = !self.listUserJoin[indexPath.row].isWinner
+                cell?.backgroundColor = self.listUserJoin[indexPath.row].isWinner ? UIColor.red:UIColor.clear
+                cell?.txtCards.isEnabled = false
+                self.tableViewUser.reloadData()
+//            }
         }
         return [winner,delete]
     }
