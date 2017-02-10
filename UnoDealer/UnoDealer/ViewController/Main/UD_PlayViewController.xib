@@ -12,7 +12,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UD_PlayViewController" customModule="UnoDealer" customModuleProvider="target">
             <connections>
                 <outlet property="tableViewUser" destination="mbH-en-QRm" id="Vp9-D8-fbr"/>
+                <outlet property="tableViewUserAdd" destination="FoS-12-hCs" id="ow4-Uf-RIJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewAddUser" destination="Nzz-la-Iin" id="PfL-FB-Kh4"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -28,7 +30,7 @@
                         <outlet property="delegate" destination="-1" id="Lc1-KY-3ME"/>
                     </connections>
                 </tableView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmB-cg-APk">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmB-cg-APk" userLabel="View Navigation">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQD-98-ob2">
@@ -67,23 +69,82 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="vVt-bo-uaB"/>
                     </constraints>
-                    <state key="normal" title="ADD"/>
+                    <state key="normal" title="ADD PLAYERS"/>
                     <connections>
                         <action selector="clickClose:" destination="-1" eventType="touchUpInside" id="wrX-KZ-f2l"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nzz-la-Iin">
+                    <rect key="frame" x="16" y="20" width="343" height="627"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FoS-12-hCs">
+                            <rect key="frame" x="8" y="59" width="327" height="522"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="QFU-fI-i2w"/>
+                                <outlet property="delegate" destination="-1" id="PJ5-qN-Whu"/>
+                            </connections>
+                        </tableView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xi6-nh-v59">
+                            <rect key="frame" x="8" y="589" width="327" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="ABO-Eb-kSL"/>
+                            </constraints>
+                            <state key="normal" title="Done">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="clickCloseAddUser:" destination="-1" eventType="touchUpInside" id="aAU-qf-FNG"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose players" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YN2-ON-Db4">
+                            <rect key="frame" x="16" y="30" width="311" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.95686274510000002" green="0.26274509800000001" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="Xi6-nh-v59" firstAttribute="leading" secondItem="Nzz-la-Iin" secondAttribute="leading" constant="8" id="658-hV-yY4"/>
+                        <constraint firstItem="Xi6-nh-v59" firstAttribute="top" secondItem="FoS-12-hCs" secondAttribute="bottom" constant="8" id="91F-F9-Zda"/>
+                        <constraint firstItem="FoS-12-hCs" firstAttribute="leading" secondItem="Nzz-la-Iin" secondAttribute="leading" constant="8" id="FW6-7P-tWR"/>
+                        <constraint firstItem="YN2-ON-Db4" firstAttribute="centerX" secondItem="Nzz-la-Iin" secondAttribute="centerX" id="G7q-m6-vCS"/>
+                        <constraint firstItem="YN2-ON-Db4" firstAttribute="top" secondItem="Nzz-la-Iin" secondAttribute="top" constant="30" id="NBd-vY-4Xe"/>
+                        <constraint firstAttribute="trailing" secondItem="FoS-12-hCs" secondAttribute="trailing" constant="8" id="biy-e6-1Wj"/>
+                        <constraint firstItem="YN2-ON-Db4" firstAttribute="leading" secondItem="Nzz-la-Iin" secondAttribute="leading" constant="16" id="eLF-vx-hDy"/>
+                        <constraint firstAttribute="trailing" secondItem="Xi6-nh-v59" secondAttribute="trailing" constant="8" id="ggj-l0-csj"/>
+                        <constraint firstItem="FoS-12-hCs" firstAttribute="top" secondItem="YN2-ON-Db4" secondAttribute="bottom" constant="8" id="hFv-LL-zn1"/>
+                        <constraint firstAttribute="bottom" secondItem="Xi6-nh-v59" secondAttribute="bottom" constant="8" id="ydv-th-zVA"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="mbH-en-QRm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="1r3-PP-WJ5"/>
                 <constraint firstAttribute="trailing" secondItem="hmB-cg-APk" secondAttribute="trailing" id="5Tu-FY-bRO"/>
                 <constraint firstItem="hmB-cg-APk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="7gR-Nf-Exe"/>
+                <constraint firstAttribute="trailing" secondItem="Nzz-la-Iin" secondAttribute="trailing" constant="16" id="8X0-fI-qfK"/>
                 <constraint firstItem="vvE-5C-4Ys" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="AI9-W7-XBF"/>
                 <constraint firstItem="vvE-5C-4Ys" firstAttribute="top" secondItem="mbH-en-QRm" secondAttribute="bottom" constant="20" id="Fq0-W8-Ylo"/>
+                <constraint firstAttribute="bottom" secondItem="Nzz-la-Iin" secondAttribute="bottom" constant="20" id="JXd-1P-bNE"/>
                 <constraint firstAttribute="trailing" secondItem="mbH-en-QRm" secondAttribute="trailing" constant="16" id="KdM-cN-gti"/>
+                <constraint firstItem="Nzz-la-Iin" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="RQI-b4-SdC"/>
                 <constraint firstItem="hmB-cg-APk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VUn-4h-0gg"/>
                 <constraint firstAttribute="trailing" secondItem="vvE-5C-4Ys" secondAttribute="trailing" id="hls-a0-8jJ"/>
                 <constraint firstAttribute="bottom" secondItem="vvE-5C-4Ys" secondAttribute="bottom" id="o3W-a9-qUn"/>
+                <constraint firstItem="Nzz-la-Iin" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="oGh-pK-xk0"/>
                 <constraint firstItem="mbH-en-QRm" firstAttribute="top" secondItem="hmB-cg-APk" secondAttribute="bottom" constant="20" id="onC-Vl-N8V"/>
             </constraints>
             <point key="canvasLocation" x="25.5" y="52.5"/>

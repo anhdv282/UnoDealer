@@ -89,17 +89,17 @@ class UD_LoginSignUpViewController: UIViewController {
             toggleViewMode(animated: true)
             
         } else{
-            if loginEmailInputView.textFieldView.text == nil || loginEmailInputView.textFieldView.text == "" {
-                showAlertView(self, title: "", message: "Please fill in email field to continue")
-                loginEmailInputView.textFieldView.becomeFirstResponder()
-            } else if loginPasswordInputView.textFieldView.text == nil || loginPasswordInputView.textFieldView.text == "" {
-                showAlertView(self, title: "", message: "Please fill in password field to continue")
-                self.loginPasswordInputView.textFieldView.becomeFirstResponder()
-            } else if !isValidEmail(loginEmailInputView.textFieldView.text ?? "") {
-                showAlertView(self, title: "", message: "Email is invalid!")
-            } else {
+//            if loginEmailInputView.textFieldView.text == nil || loginEmailInputView.textFieldView.text == "" {
+//                showAlertView(self, title: "", message: "Please fill in email field to continue")
+//                loginEmailInputView.textFieldView.becomeFirstResponder()
+//            } else if loginPasswordInputView.textFieldView.text == nil || loginPasswordInputView.textFieldView.text == "" {
+//                showAlertView(self, title: "", message: "Please fill in password field to continue")
+//                self.loginPasswordInputView.textFieldView.becomeFirstResponder()
+//            } else if !isValidEmail(loginEmailInputView.textFieldView.text ?? "") {
+//                showAlertView(self, title: "", message: "Email is invalid!")
+//            } else {
                 MBProgressHUD.showAdded(to: self.view, animated: true)
-                FIRAuth.auth()?.signIn(withEmail: loginEmailInputView.textFieldView.text!, password: loginPasswordInputView.textFieldView.text!) { (user, error) in
+                FIRAuth.auth()?.signIn(withEmail: "a@a.com"/*loginEmailInputView.textFieldView.text!*/, password:"Zxcvbnm1" /*loginPasswordInputView.textFieldView.text!*/) { (user, error) in
                     MBProgressHUD.hide(for: self.view, animated: true)
                     if error == nil {
                         self.setUserDefaults(email: self.signupEmailInputView.textFieldView.text!, password: self.signupPasswordInputView.textFieldView.text!)
@@ -109,7 +109,7 @@ class UD_LoginSignUpViewController: UIViewController {
                         showAlertView(self, title: "", message: "\(error!.localizedDescription~?)")
                     }
                 }
-            }
+//            }
         }
     }
     
@@ -159,7 +159,6 @@ class UD_LoginSignUpViewController: UIViewController {
                 }
             }
             //TODO: signup by this data
-            NSLog("Email:\(signupEmailInputView.textFieldView.text) Password:\(signupPasswordInputView.textFieldView.text), PasswordConfirm:\(signupPasswordConfirmInputView.textFieldView.text)")
         }
     }
     

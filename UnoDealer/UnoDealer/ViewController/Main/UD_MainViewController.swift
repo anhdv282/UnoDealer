@@ -21,6 +21,7 @@ class UD_MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableViewUsers.register(UINib(nibName: "UD_UserJoinTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "UD_UserJoinTableViewCell")
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         refUsers.queryOrdered(byChild: "date").observe(.value, with: { snapshot in
             var newItems: [UD_User] = [UD_User]()
             

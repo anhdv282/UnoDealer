@@ -23,6 +23,8 @@
 		046300841E1CADCD00C8FC15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046300821E1CADCD00C8FC15 /* Main.storyboard */; };
 		046300861E1CADCD00C8FC15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046300851E1CADCD00C8FC15 /* Assets.xcassets */; };
 		046300891E1CADCD00C8FC15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046300871E1CADCD00C8FC15 /* LaunchScreen.storyboard */; };
+		047728891E4DB38000291BF0 /* UD_UserAddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047728871E4DB38000291BF0 /* UD_UserAddTableViewCell.swift */; };
+		0477288A1E4DB38000291BF0 /* UD_UserAddTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047728881E4DB38000291BF0 /* UD_UserAddTableViewCell.xib */; };
 		047997611E24D0E0002E115C /* UD_PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479975F1E24D0E0002E115C /* UD_PlayViewController.swift */; };
 		047997621E24D0E0002E115C /* UD_PlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047997601E24D0E0002E115C /* UD_PlayViewController.xib */; };
 		048041681E359F5000620F33 /* UD_User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048041671E359F5000620F33 /* UD_User.swift */; };
@@ -52,6 +54,8 @@
 		046300851E1CADCD00C8FC15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		046300881E1CADCD00C8FC15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0463008A1E1CADCD00C8FC15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		047728871E4DB38000291BF0 /* UD_UserAddTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UD_UserAddTableViewCell.swift; path = ViewController/Main/CustomCell/UD_UserAddTableViewCell.swift; sourceTree = "<group>"; };
+		047728881E4DB38000291BF0 /* UD_UserAddTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UD_UserAddTableViewCell.xib; path = ViewController/Main/CustomCell/UD_UserAddTableViewCell.xib; sourceTree = "<group>"; };
 		0479975D1E24C059002E115C /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = "../../../../Library/Developer/Xcode/DerivedData/UnoDealer-akkqiwppxbbgxidpqnyzqtwcvpff/Build/Products/Debug-iphoneos/NVActivityIndicatorView/NVActivityIndicatorView.framework"; sourceTree = "<group>"; };
 		0479975F1E24D0E0002E115C /* UD_PlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UD_PlayViewController.swift; path = ViewController/Main/UD_PlayViewController.swift; sourceTree = "<group>"; };
 		047997601E24D0E0002E115C /* UD_PlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UD_PlayViewController.xib; path = ViewController/Main/UD_PlayViewController.xib; sourceTree = "<group>"; };
@@ -116,6 +120,8 @@
 				040B97201E1CFF9E00387DCF /* UD_RoomTableViewCell.xib */,
 				043D58921E30B8450079827F /* UD_UserJoinTableViewCell.swift */,
 				043D58931E30B8450079827F /* UD_UserJoinTableViewCell.xib */,
+				047728871E4DB38000291BF0 /* UD_UserAddTableViewCell.swift */,
+				047728881E4DB38000291BF0 /* UD_UserAddTableViewCell.xib */,
 			);
 			name = CustomCell;
 			sourceTree = "<group>";
@@ -274,6 +280,7 @@
 				040B96FA1E1CB01500387DCF /* GoogleService-Info.plist in Resources */,
 				040B971D1E1CFDA000387DCF /* UD_RoomViewController.xib in Resources */,
 				047997621E24D0E0002E115C /* UD_PlayViewController.xib in Resources */,
+				0477288A1E4DB38000291BF0 /* UD_UserAddTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				040B97141E1CED1F00387DCF /* UD_MainViewController.swift in Sources */,
+				047728891E4DB38000291BF0 /* UD_UserAddTableViewCell.swift in Sources */,
 				047997611E24D0E0002E115C /* UD_PlayViewController.swift in Sources */,
 				040B97191E1CEF6800387DCF /* Global.swift in Sources */,
 				045DB7D41E1E491C005F29A0 /* Room.swift in Sources */,
