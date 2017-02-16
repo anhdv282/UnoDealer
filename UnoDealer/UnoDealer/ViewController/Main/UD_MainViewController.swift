@@ -74,7 +74,7 @@ class UD_MainViewController: UIViewController {
             let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
             print("Text field: \(textField?.text)")
             let date = NSDate()
-            let udUser = UD_User(dateJoined: date.timeIntervalSince1970, email : "new@new.com", username: textField?.text ?? "", isActive: true, income: 0)
+            let udUser = UD_User(dateJoined: date.timeIntervalSince1970, email : "new@new.com", username: textField?.text ?? "", isActive: true, income: 0, isWinner: false)
             // 3
             let udUserRef = self.refUsers.childByAutoId()
             

@@ -17,17 +17,18 @@ struct UD_User {
     let username: String
     let income: Float
     var isActive: Bool
-    var isWinner: Bool = false
+    var isWinner: Bool
     let ref: FIRDatabaseReference?
     
     
-    init(dateJoined: Double, email: String, username: String, isActive: Bool, income: Float, key: String = "") {
+    init(dateJoined: Double, email: String, username: String, isActive: Bool, income: Float, key: String = "", isWinner: Bool) {
         self.key = key
         self.username = username
         self.email = email
         self.isActive = isActive
         self.dateJoined = dateJoined
         self.income = income
+        self.isWinner = isWinner
         self.ref = nil
     }
     
@@ -39,6 +40,7 @@ struct UD_User {
         username = snapshotValue["username"] as! String
         isActive = snapshotValue["isActive"] as! Bool
         income = snapshotValue["income"] as! Float
+        isWinner = snapshotValue["isWinner"] as! Bool
         ref = snapshot.ref
     }
     
@@ -48,6 +50,7 @@ struct UD_User {
             "email": email,
             "username": username,
             "isActive": isActive,
+            "isWinner": isWinner,
             "income": income
         ]
     }

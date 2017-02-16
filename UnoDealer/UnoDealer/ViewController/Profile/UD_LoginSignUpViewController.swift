@@ -140,7 +140,7 @@ class UD_LoginSignUpViewController: UIViewController {
                             if error == nil {
                                 let date = NSDate()
                                 
-                                let udUser = UD_User(dateJoined: date.timeIntervalSince1970, email : self.signupEmailInputView.textFieldView.text ?? "", username: self.signupEmailInputView.textFieldView.text ?? "", isActive: true, income: 0)
+                                let udUser = UD_User(dateJoined: date.timeIntervalSince1970, email : self.signupEmailInputView.textFieldView.text ?? "", username: self.signupEmailInputView.textFieldView.text ?? "", isActive: true, income: 0, isWinner: false)
                                 // 3
                                 let udUserRef = self.ref.child(user?.uid ?? "")
                                 

@@ -188,9 +188,10 @@ extension UD_PlayViewController : UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == tableViewUser {
             let cellUserJoin = tableView.dequeueReusableCell(withIdentifier: "UD_UserJoinTableViewCell", for: indexPath as IndexPath) as! UD_UserJoinTableViewCell
+            print("\(listUserJoin[indexPath.row].isWinner)")
             cellUserJoin.txtCards.isHidden = listUserJoin[indexPath.row].isWinner
             cellUserJoin.txtCards.delegate = self
-            cellUserJoin.amount.isHidden = !listUserJoin[indexPath.row].isWinner
+            cellUserJoin.amount.isHidden = listUserJoin[indexPath.row].isWinner ? false : true
             cellUserJoin.amount.text = "\(listUserJoin[indexPath.row].income)"
             cellUserJoin.username.text = listUserJoin[indexPath.row].username
             cellUserJoin.selectionStyle = .none
