@@ -12,6 +12,7 @@ import FirebaseDatabase
 import MBProgressHUD
 class UD_PlayViewController: UIViewController {
     var user:User!
+    var round:Round!
     var room:Room!
     var listUserJoin:[UD_User] = [UD_User]()
     var listUserAdd:[UD_User] = [UD_User]()
@@ -19,9 +20,14 @@ class UD_PlayViewController: UIViewController {
     var indexWinner:Int = -1
     let refUsers = FIRDatabase.database().reference(withPath: "users")
     let refRooms = FIRDatabase.database().reference(withPath: "rooms")
+    var refRounds = ""
     @IBOutlet weak var viewAddUser: UIView!
     @IBOutlet weak var tableViewUser: UITableView!
     @IBOutlet weak var tableViewUserAdd: UITableView!
+    
+    @IBOutlet weak var lblWinner: UILabel!
+    
+    @IBOutlet weak var lblAmount: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +57,7 @@ class UD_PlayViewController: UIViewController {
             MBProgressHUD.hide(for: self.view, animated: true)
         })
         
-        refRooms.child(room.key).child("users").observe(.value, with: { (snapshot) in
+        refRooms.child(room.key).child("rounds").child(round.key).child("users").observe(.value, with: { (snapshot) in
             if snapshot.exists() {
                 var newItems: [UD_User] = [UD_User]()
                 for item in snapshot.children {
@@ -106,7 +112,7 @@ class UD_PlayViewController: UIViewController {
     }
     
     func addNewUser(user : UD_User) {
-        let roomUser = refRooms.child(room.key).child("users").child(user.key)
+        let roomUser = refRooms.child(room.key).child("rounds").child(round.key).child("users").child(user.key)
         roomUser.setValue(user.toAnyObject()) { (error, ref) in
             if error == nil {
                 print("Done")
@@ -117,7 +123,7 @@ class UD_PlayViewController: UIViewController {
     }
     
     func removeUser(user : UD_User) {
-        let roomUser = refRooms.child(room.key).child("users").child(user.key)
+        let roomUser = refRooms.child(room.key).child("rounds").child(round.key).child("users").child(user.key)
         roomUser.removeValue()
     }
 }
@@ -131,7 +137,7 @@ extension UD_PlayViewController : UITextFieldDelegate {
         print("\(textField.text)")
         if indexWinner > -1 {
             let keyUser:String = self.listUserJoin[indexWinner].key
-            let userPath = refRooms.child(room.key).child("users").child(keyUser)
+            let userPath = refRooms.child(room.key).child("rounds").child(round.key).child("users").child(keyUser)
             let incomePath = userPath.child("income")
             let income = self.listUserJoin[indexWinner].income
             let newIncome = (textField.text == "") ? 0 : Float(textField.text!)
@@ -140,6 +146,7 @@ extension UD_PlayViewController : UITextFieldDelegate {
             incomePath.setValue(finalIncome, withCompletionBlock: { (error, ref) in
                 if error == nil {
 //                    self.tableViewUser.reloadData()
+                    self.lblAmount.text = "\(String(finalIncome))"
                 } else {
                     showAlertView(self, title: "", message: (error?.localizedDescription)!)
                 }
@@ -194,6 +201,14 @@ extension UD_PlayViewController : UITableViewDelegate,UITableViewDataSource {
             cellUserJoin.amount.isHidden = listUserJoin[indexPath.row].isWinner ? false : true
             cellUserJoin.amount.text = "\(listUserJoin[indexPath.row].income)"
             cellUserJoin.username.text = listUserJoin[indexPath.row].username
+            if self.listUserJoin[indexPath.row].isWinner {
+                cellUserJoin.txtCards.isHidden = true
+                cellUserJoin.amount.isHidden = false
+            } else {
+                cellUserJoin.txtCards.isHidden = false
+                cellUserJoin.amount.isHidden = true
+            }
+            
             cellUserJoin.selectionStyle = .none
             return cellUserJoin
         } else {
@@ -223,10 +238,22 @@ extension UD_PlayViewController : UITableViewDelegate,UITableViewDataSource {
         
         let winner = UITableViewRowAction(style: .destructive, title: self.existWinner ? "Not Winner" : "Winner") { (action, indexPath) in
             self.listUserJoin[indexPath.row].isWinner = !self.listUserJoin[indexPath.row].isWinner
+            
             cell?.backgroundColor = self.listUserJoin[indexPath.row].isWinner ? UIColor.red:UIColor.clear
-            cell?.txtCards.isEnabled = !self.listUserJoin[indexPath.row].isWinner
+            if self.listUserJoin[indexPath.row].isWinner {
+                cell?.txtCards.isHidden = true
+                cell?.amount.isHidden = false
+            } else {
+                cell?.txtCards.isHidden = false
+                cell?.amount.isHidden = true
+            }
+//            cell?.txtCards.isEnabled = !self.listUserJoin[indexPath.row].isWinner
             self.indexWinner = !self.existWinner ? indexPath.row : -1
             self.existWinner = !self.existWinner
+            self.lblWinner.text = "Winner: \(self.listUserJoin[indexPath.row].username)"
+            self.lblAmount.text = "\(self.listUserJoin[indexPath.row].income)"
+            let ref = self.refRooms.child(self.room.key).child("rounds").child(self.round.key).child("users")
+            ref.child(self.listUserJoin[indexPath.row].key).updateChildValues(["isWinner":true])
             self.tableViewUser.reloadData()
         }
         

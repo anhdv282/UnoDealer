@@ -38,12 +38,12 @@ class UD_RoomViewController: UIViewController {
             MBProgressHUD.hide(for: self.view, animated: true)
         })
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     @IBAction func clickAdd(_ sender: Any) {
         // Create the alert controller
         let alertController = UIAlertController(title: "", message: "Do you want add a new play room", preferredStyle: .alert)
@@ -52,17 +52,17 @@ class UD_RoomViewController: UIViewController {
         let addAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.default) {
             UIAlertAction in
             let date = NSDate()
-//            let dateFormatter = DateFormatter()
-//            dateFormatter.dateFormat = "dd MMM yyyy - HH:mm"
-//            let dateString = dateFormatter.string(from: date as Date)
+            //            let dateFormatter = DateFormatter()
+            //            dateFormatter.dateFormat = "dd MMM yyyy - HH:mm"
+            //            let dateString = dateFormatter.string(from: date as Date)
             // 2
             let groceryItem = Room(date: date.timeIntervalSince1970, addedByUser: self.user.uid, completed: false)
             // 3
-//            let groceryItemRef = self.ref.child(dateString)
+            //            let groceryItemRef = self.ref.child(dateString)
             let groceryItemRef = self.ref.childByAutoId()
             // 4
             groceryItemRef.setValue(groceryItem.toAnyObject())
-//            self.addNewRoom()
+            //            self.addNewRoom()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
             UIAlertAction in
@@ -80,7 +80,7 @@ class UD_RoomViewController: UIViewController {
     @IBAction func clickBack(_ sender: UIButton) {
         _ = self.navigationController?.popViewController(animated: true)
     }
-
+    
 }
 
 extension UD_RoomViewController : UITableViewDelegate,UITableViewDataSource {
@@ -98,9 +98,12 @@ extension UD_RoomViewController : UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if listRoom[indexPath.row].completed == false {
-        let playVC = UD_PlayViewController(nibName: "UD_PlayViewController", bundle: Bundle.main)
-        playVC.room = listRoom[indexPath.row]
-        self.navigationController?.pushViewController(playVC, animated: true)
+//            let playVC = UD_PlayViewController(nibName: "UD_PlayViewController", bundle: Bundle.main)
+//            playVC.round = listRoom[indexPath.row]
+//            self.navigationController?.pushViewController(playVC, animated: true)
+            let roundVC = UD_RoundViewController(nibName: "UD_RoundViewController", bundle: Bundle.main)
+            roundVC.room = listRoom[indexPath.row]
+            self.navigationController?.pushViewController(roundVC, animated: true)
         } else {
             showAlertView(self, title: "", message: "This game is closed")
         }

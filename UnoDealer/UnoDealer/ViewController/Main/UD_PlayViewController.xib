@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UD_PlayViewController" customModule="UnoDealer" customModuleProvider="target">
             <connections>
+                <outlet property="lblAmount" destination="7cB-yW-cYJ" id="Khq-JQ-5k5"/>
+                <outlet property="lblWinner" destination="FRE-fG-DjI" id="gtv-u0-GeA"/>
                 <outlet property="tableViewUser" destination="mbH-en-QRm" id="Vp9-D8-fbr"/>
                 <outlet property="tableViewUserAdd" destination="FoS-12-hCs" id="ow4-Uf-RIJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -23,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mbH-en-QRm">
-                    <rect key="frame" x="16" y="84" width="343" height="503"/>
+                    <rect key="frame" x="16" y="103" width="343" height="484"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="5Vj-Fd-IqY"/>
@@ -74,6 +76,18 @@
                         <action selector="clickClose:" destination="-1" eventType="touchUpInside" id="wrX-KZ-f2l"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winner :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FRE-fG-DjI">
+                    <rect key="frame" x="16" y="72" width="63.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cB-yW-cYJ">
+                    <rect key="frame" x="335" y="72" width="24" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nzz-la-Iin">
                     <rect key="frame" x="16" y="20" width="343" height="627"/>
                     <subviews>
@@ -136,16 +150,20 @@
                 <constraint firstAttribute="trailing" secondItem="hmB-cg-APk" secondAttribute="trailing" id="5Tu-FY-bRO"/>
                 <constraint firstItem="hmB-cg-APk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="7gR-Nf-Exe"/>
                 <constraint firstAttribute="trailing" secondItem="Nzz-la-Iin" secondAttribute="trailing" constant="16" id="8X0-fI-qfK"/>
+                <constraint firstAttribute="trailing" secondItem="7cB-yW-cYJ" secondAttribute="trailing" constant="16" id="8YX-bB-SaW"/>
                 <constraint firstItem="vvE-5C-4Ys" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="AI9-W7-XBF"/>
+                <constraint firstItem="mbH-en-QRm" firstAttribute="top" secondItem="FRE-fG-DjI" secondAttribute="bottom" constant="10" id="D9I-Cc-y1s"/>
+                <constraint firstItem="FRE-fG-DjI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="FoJ-p5-3ad"/>
                 <constraint firstItem="vvE-5C-4Ys" firstAttribute="top" secondItem="mbH-en-QRm" secondAttribute="bottom" constant="20" id="Fq0-W8-Ylo"/>
                 <constraint firstAttribute="bottom" secondItem="Nzz-la-Iin" secondAttribute="bottom" constant="20" id="JXd-1P-bNE"/>
                 <constraint firstAttribute="trailing" secondItem="mbH-en-QRm" secondAttribute="trailing" constant="16" id="KdM-cN-gti"/>
+                <constraint firstItem="FRE-fG-DjI" firstAttribute="top" secondItem="hmB-cg-APk" secondAttribute="bottom" constant="8" id="M5b-fG-Wtc"/>
                 <constraint firstItem="Nzz-la-Iin" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="RQI-b4-SdC"/>
                 <constraint firstItem="hmB-cg-APk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VUn-4h-0gg"/>
                 <constraint firstAttribute="trailing" secondItem="vvE-5C-4Ys" secondAttribute="trailing" id="hls-a0-8jJ"/>
+                <constraint firstItem="7cB-yW-cYJ" firstAttribute="top" secondItem="hmB-cg-APk" secondAttribute="bottom" constant="8" id="m9v-fQ-w3g"/>
                 <constraint firstAttribute="bottom" secondItem="vvE-5C-4Ys" secondAttribute="bottom" id="o3W-a9-qUn"/>
                 <constraint firstItem="Nzz-la-Iin" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="oGh-pK-xk0"/>
-                <constraint firstItem="mbH-en-QRm" firstAttribute="top" secondItem="hmB-cg-APk" secondAttribute="bottom" constant="20" id="onC-Vl-N8V"/>
             </constraints>
             <point key="canvasLocation" x="25.5" y="52.5"/>
         </view>
